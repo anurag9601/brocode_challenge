@@ -56,4 +56,33 @@ def hangman(word, guessLetters):
             result += "-"
     return result
 
+#Problem 3
+# This problem is a continuation of Uno Part 1 (although you don't need to complete that problem to complete this one).
+# It's your turn to play again. Create a function that takes as its arguments (1) your hand (a list of cards), and (2) the face-up card. In Uno, you are able to play a card from your hand if either:
+# One of the card colors in your hand matches the face-up card's color.
+# One of the card numbers in your hand matches the face-up card's number.
+# Write a function that will return:
+# "Uno!" if after playing your card, you are left with a single card.
+# "You won!" if after playing your card, you are left with zero cards (an empty list).
+# "Keep going..." otherwise.
+#Examples: 
+# decision(["yellow 3", "red 3"], "red 10") ➞ "Uno!"
+# decision(["blue 1"], "blue 5") ➞ "You won!"
+# decision(["blue 1", "green 2", "yellow 4", "red 2"], "blue 5") ➞ "Keep going..."
+
+#Solution 3
+def decision(lst_of_cards, remain_card):
+    split_remain_card = remain_card.split(" ")
+    for i in lst_of_cards:
+        split_card = i.split(" ")
+        if(split_card[0] == split_remain_card[0] or split_card[1] == split_remain_card[1]):
+            if(len(lst_of_cards) == 1):
+                return "You won!"
+            elif(len(lst_of_cards) == 2):
+                return "Uno!"
+            else:
+                return "Keep going..."
+    return "Keep going..."
+
+
 
