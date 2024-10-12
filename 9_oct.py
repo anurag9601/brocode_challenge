@@ -39,6 +39,3 @@ def maxProfit(self, prices):
             max_profit = current_profit
     
     return max_profit
-
-#Problem 2
-
