@@ -72,4 +72,56 @@ def tic_tac_toe(state):
         return state[0][2]
     else:
         return "Draw"
+
+#Problem 3
+
+# A prison can be represented as a list of cells. Each cell contains exactly one prisoner. A 1 represents an unlocked cell and a 0 represents a locked cell.
+
+# [1, 1, 0, 0, 0, 1, 0]
+# Starting inside the leftmost cell, you are tasked with seeing how many prisoners you can set free, with a catch. You are the prisoner in the first cell. If the first cell is locked, you cannot free anyone. Each time you free a prisoner, the locked cells become unlocked, and the unlocked cells become locked again.
+
+# So, if we use the example above:
+
+# [1, 1, 0, 0, 0, 1, 0]
+# # You free the prisoner in the 1st cell.
+
+# [0, 0, 1, 1, 1, 0, 1] 
+# # You free the prisoner in the 3rd cell (2nd one locked).
+
+# [1, 1, 0, 0, 0, 1, 0]
+# # You free the prisoner in the 6th cell (3rd, 4th and 5th locked).
+
+# [0, 0, 1, 1, 1, 0, 1]
+# # You free the prisoner in the 7th cell - and you are done!
+# Here, we have set free 4 prisoners in total.
+
+# Create a function that, given this unique prison arrangement, returns the number of freed prisoners.
+
+# Examples
+# freed_prisoners([1, 1, 0, 0, 0, 1, 0]) ➞ 4
+
+# freed_prisoners([1, 1, 1]) ➞ 1
+
+# freed_prisoners([0, 0, 0]) ➞ 0
+
+# freed_prisoners([0, 1, 1, 1]) ➞ 0
+
+#Solution
+
+def freed_prisoners(state):
+    freed = 0
+    if(state[0] == 0):
+        return freed
+    else:
+        freed += 1
+    for i in range(len(state)):
+        if(state[i] == 0):
+            for j in range(len(state)):
+                if(state[j] == 0):
+                    state[j] = 1
+                else:
+                    state[j] = 0
+            freed += 1
+            print(state)
+    return freed
         
