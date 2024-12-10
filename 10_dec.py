@@ -1,3 +1,4 @@
+#Handling regular expressions
 def is_match(s, p):
     count = 0
 
@@ -85,6 +86,58 @@ def advanced_sort(lst):
         
     return result
 
-print(advanced_sort(["b", "a", "b", "a", "c"]))
+def freed_prisoners(lst):
+    free_pres = 0
+
+    if(lst[0] == 0):
+        return 0
+    else:
+        for i in range(len(lst)):
+            if(lst[i] == 1):
+                for j in range(len(lst)):
+                    if(lst[j] == 0):
+                        lst[j] = 1
+                    else:
+                        lst[j] = 0
+                free_pres += 1
+                print(lst)
             
+        return free_pres
+
+# John is playing a dice game. The rules are as follows.
+
+# Roll two dice.
+# Add the numbers on the dice together.
+# Add the total to your overall score.
+# Repeat this for three rounds.
+# But if you roll DOUBLES, your score is instantly wiped to 0 and your game ends immediately!
+
+# Create a function that takes in a list of tuples as input, and return John's score after his game has ended.
+
+#Solution
+def dice_game(lst):
+    final_score = 0
+
+    for i in lst:
+        if(i[0] == i[1]):
+            return 0
+        else:
+            final_score += (i[0] + i[1])
+    return final_score
+
+#Problem
+# Create a function that takes a dictionary of objects like { "name": "John", "notes": [3, 5, 4] } and returns a dictionary of objects like { "name": "John", "top_note": 5 }.
+
+#Solution
+def top_note(obj):
+    for key,values in obj.items():
+        max = float("-inf")
+        if(key == "notes"):
+            for j in values:
+                if(j > max):
+                    max = j
+            del obj[key]
+            break
+    obj["top_note"] = max
+    return obj
 
