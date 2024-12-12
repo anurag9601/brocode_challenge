@@ -141,3 +141,14 @@ def top_note(obj):
     obj["top_note"] = max
     return obj
 
+#Count lenght of the number without converting it into string
+def digits_count(num):
+    num_length = 0
+    if(num == 0):
+        return 1
+    else:
+        while(num > 0):
+            num = num // 10
+            num_length += 1
+    return num_length
+
