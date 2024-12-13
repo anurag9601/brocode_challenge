@@ -24,3 +24,23 @@ def get_longest_palindrome(input_str):
 # print(get_longest_palindrome("aaaa"))
 # print(get_longest_palindrome("a"))
 # print(get_longest_palindrome("ac"))
+
+def two_sum(numbers, target):
+    left ,right = 0, len(numbers) -1 
+
+    result = []
+
+    while left < right:
+        sum = numbers[left] + numbers[right]
+
+        if sum == target:
+            result.append(left + 1)
+            result.append(right + 1)
+            return result
+        elif sum < target:
+            left += 1
+        else:
+            right += 1
+
+# print(two_sum([2, 7, 11, 15], 9))
+# print(two_sum(list(range(1, 10001)), 19999))
