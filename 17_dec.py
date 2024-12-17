@@ -43,5 +43,46 @@ def are_anagrams(str1, str2):
 # print(are_anagrams("school master", "the classroom"))
 # print(are_anagrams("", ""))
 
+def word_search(board, word):
+    for i in range(len(board[0])):
+        temp = ""
+        for j in range(len(board)):
+            temp += board[j][i]
+            if(temp == word):
+                return True
+        if(temp == word):
+            return True
+    
+    for i in range(len(board)):
+        temp = ""
+        for j in range(len(board[0])):
+            temp += board[i][j]
+            if(temp == word):
+                return True
+        if(temp == word):
+            return True
+        
+    lenght_board = len(board)-1
+    left_digonally = ""
+    right_digonally = ""
+
+    for i in range(len(board)):
+        left_digonally += board[i][i]
+        right_digonally += board[i][i-lenght_board]
+        if(left_digonally == word or right_digonally == word):
+            return True
+
+    if(left_digonally == word or right_digonally == word):
+        return True
+    
+    return False
+
+# print(word_search([["A", "B", "C"], ["D", "E", "F"], ["G", "H", "I"]], "BEH"))
+# print(word_search([["A", "B", "C"], ["D", "E", "F"], ["G", "H", "I"]], "AEI"))
+# print(word_search([["A", "B", "C"], ["D", "E", "F"], ["G", "H", "I"]], "XYZ"))
+# print(word_search([["A", "B", "C"], ["D", "E", "F"], ["G", "H", "I"]], "BE"))
+
+
+
 
 
