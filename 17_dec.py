@@ -50,8 +50,6 @@ def word_search(board, word):
             temp += board[j][i]
             if(temp == word):
                 return True
-        if(temp == word):
-            return True
     
     for i in range(len(board)):
         temp = ""
@@ -59,21 +57,16 @@ def word_search(board, word):
             temp += board[i][j]
             if(temp == word):
                 return True
-        if(temp == word):
-            return True
         
-    lenght_board = len(board)-1
+    length_board = len(board)-1
     left_digonally = ""
     right_digonally = ""
 
     for i in range(len(board)):
         left_digonally += board[i][i]
-        right_digonally += board[i][i-lenght_board]
+        right_digonally += board[i][i-length_board]
         if(left_digonally == word or right_digonally == word):
             return True
-
-    if(left_digonally == word or right_digonally == word):
-        return True
     
     return False
 
