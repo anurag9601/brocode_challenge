@@ -68,6 +68,12 @@ def find_largest_element(lst,k):
 # print(find_largest_element([3, 2, 1, 5, 6, 4],1))
 # print(find_largest_element([3, 2, 1, 5, 6, 4],6))
 
+# Longest Subarray with Sum K
+
+
+
+
+
 
 
 
