@@ -31,4 +31,30 @@ def find_median_sort_arr(nums1, nums2):
         center_i = len(merge_nums)//2 - 1
         return (merge_nums[center_i] + merge_nums[(center_i + 1)])/2
 
-print(find_median_sort_arr([1,2],[3,4]))
+# print(find_median_sort_arr([1,2],[3,4]))
+# print(find_median_sort_arr([1,2,5],[8,3,4]))
+
+def day_of_year(input_date_str):
+    date_split = input_date_str.split("/")
+    year = int(date_split[2])
+    month = int(date_split[0])
+    days = int(date_split[1])
+    
+    days_lst = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
+    if(year%4 == 0 and year%100 != 0 or year%100 == 0 and year%400 == 0 ):
+        days_lst[1] = 29
+
+    total_days = 0
+    for i in range(len(days_lst)):
+        if(i == month-1):
+            break
+        else:
+            total_days += days_lst[i]
+        
+    return total_days + days
+    
+# print(day_of_year("11/16/2020"))
+# print(day_of_year("1/9/2019"))
+# print(day_of_year("3/1/2004"))
+# print(day_of_year("12/31/2000"))
