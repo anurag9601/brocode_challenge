@@ -1,5 +1,6 @@
 #find the longest palindrome in the given string
 
+#Accepted by leetcode (palindrome problem)
 def get_longest_palindrome(input_str):
     longest_palin = ""
     length_long_palin = 0
@@ -40,11 +41,11 @@ def two_sum(numbers, target):
         elif sum < target:
             left += 1
         else:
-            right += 1
+            right -= 1
 
-# print(two_sum([2, 7, 11, 15], 9))
-# print(two_sum([1, 3, 5, 7, 9], 12))
-# print(two_sum(list(range(1, 10001)), 19999))
+print(two_sum([2, 7, 11, 15], 9))
+print(two_sum([1, 3, 5, 7, 9], 12))
+print(two_sum(list(range(1, 10001)), 19999))
 
 def find_long_substr(input_str):
     longest_substr = ""

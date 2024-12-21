@@ -118,7 +118,25 @@ def two_sum_problem(num_lst, target):
             if(current_sum == target):
                 return [i,j]
 
+def two_sum(num_lst, target):
+    left = 0
+    right = len(num_lst) - 1
+
+    while left < right:
+        current_sum = num_lst[left] + num_lst[right]
+
+        if current_sum == target:
+            return [left, right]
+        elif current_sum > target:
+            right -= 1
+        else:
+            left += 1
+
 # print(two_sum_problem([2,7,11,15], 9))
+
+# print(two_sum([2,7,11,15], 9))
+# print(two_sum([1, 3, 5, 7, 9], 12))
+# print(two_sum(list(range(1, 10001)), 19999))
 
 # 2. Best Time to Buy and Sell Stock:
 # You are given an array prices where prices[i] is the price of a given stock on the ith day. You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.   
