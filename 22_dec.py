@@ -70,3 +70,42 @@ primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67
 # print(is_prime_binary_search(primes, 4))
 # print(is_prime_binary_search(primes, 67))
 # print(is_prime_binary_search(primes, 36))
+
+# Write a function that sorts the positive numbers in ascending order, and keeps the negative numbers untouched.
+
+def pos_neg_sort(input_lst):
+    for i in range(len(input_lst)):
+        if(input_lst[i] > 0):
+            min_i = i
+            for j in range(i,len(input_lst)):
+                if(input_lst[j] > 0):
+                    if(input_lst[min_i] > input_lst[j]):
+                        min_i = j
+            input_lst[min_i],input_lst[i] = input_lst[i],input_lst[min_i]
+    return input_lst
+
+# print(pos_neg_sort([6, 3, -2, 5, -8, 2, -2]))
+# print(pos_neg_sort([6, 5, 4, -1, 3, 2, -1, 1]))
+# print(pos_neg_sort([-5, -5, -5, -5, 7, -5]))
+# print(pos_neg_sort([]))
+
+def string_extension(s):
+    ints = "0123456789"
+    recurs_i = 1
+
+    result = ""
+
+    for i in s:
+        if(i in ints):
+            recurs_i = int(i)
+        else:
+            for j in range(recurs_i):
+                result += i
+
+    return result
+
+# print(string_extension("3Mat"))
+# print(string_extension("3M123u42b12a"))
+# print(string_extension("3M2u5b2a1s1h2i1r"))
+# print(string_extension("airforce"))
+# print(string_extension(""))
