@@ -35,3 +35,35 @@ def is_happy_using_recur(n):
 # print(is_happy(139))
 # print(is_happy_using_recur(139))
 # print(is_happy_using_recur(67))
+
+def num_split(n):
+    result = []
+    is_nagative = False
+
+    if(n < 0):
+        is_nagative = True
+        n = n * -1
+
+    count = 0
+
+    while(n != 0):
+        temp = str(n%10)
+        n = n//10
+        for i in range(count):
+            temp += "0"
+        if(is_nagative == True):
+            temp = int(temp) * -1
+            result.insert(0, temp)
+        else:
+            temp = int(temp)
+            result.insert(0, temp)
+        count += 1
+    return result
+
+# print(num_split(-434))
+# print(num_split(100))
+# print(num_split(39))
+# print(num_split(1234))
+
+        
+
