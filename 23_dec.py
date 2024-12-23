@@ -78,6 +78,8 @@ def tic_tac_toe():
 
     turn = "X"
 
+    turn_count = 0
+
     def update_board(index):
         nonlocal turn
 
@@ -94,16 +96,23 @@ def tic_tac_toe():
                     turn = "O" if turn == "X" else "X"
                     return "Valid"
         return "Invalid"
-
-    def print_board():
-        for i in board:
-            print(i)
         
     def celebration(message, delay):
         for char in message:
             print(char, end="", flush=True)
             time.sleep(delay)
         print()
+        print("Final board")
+
+    def print_board():
+        nonlocal game_over
+
+        if(turn_count >= 9 and game_over == False):
+            game_over = True
+            message = "Game Draw 😉"
+            celebration(message, 0.2)
+        for i in board:
+            print(i)
 
     def check_win():
         nonlocal game_over
@@ -143,6 +152,7 @@ def tic_tac_toe():
             player1 = input(f"{turn}'s turn: ")
             response = update_board(player1)
             if(response == "Valid"):
+                turn_count += 1
                 player1_enter_valid_key = True
                 print_board()
             else:
@@ -154,6 +164,7 @@ def tic_tac_toe():
                 player2 = input(f"{turn}'s turn: ")
                 response = update_board(player2)
                 if(response == "Valid"):
+                    turn_count += 1
                     player2_enter_valid_key = True
                     print_board()
                 else:
