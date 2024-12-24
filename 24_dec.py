@@ -56,3 +56,22 @@ def longest_run(lst):
 # print(longest_run([5, 4, 2, 1]))
 # print(longest_run([1, 2, 3, 5, 6, 7, 8, 9]))
 
+#Greatest common divisor of string
+
+def great_common_div_of_strs(str1, str2):
+
+    def gcd(a, b):
+        while b:
+            a , b = b , a % b
+            return a
+    
+    if( str1 + str2 != str2 + str1 ):
+        return ""
+
+    gcd_length = gcd(len(str1), len(str2))
+
+    return str1[:gcd_length]
+
+# print(great_common_div_of_strs("ABCABC", "ABC"))
+# print(great_common_div_of_strs("ABABAB", "AB"))
+# print(great_common_div_of_strs("LEET", "CODE"))
