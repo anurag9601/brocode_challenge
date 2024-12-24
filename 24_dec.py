@@ -34,3 +34,25 @@ def alpha_clash(str_A, ind_A, str_Z, ind_Z):
 #   "WKJVUNXHRFDIOBTCSLZMPYGQAE",
 #   [7, 5, 3, 1, 9, 11, 13, 15, 17, 19]
 # ))
+
+def longest_run(lst):
+    longest_run = 0
+
+    temp = []
+
+    for i in range(len(lst)):
+        if(temp == []):
+            temp.append(lst[i])
+        elif(lst[i] == (temp[-1]-1) or lst[i] == (temp[-1]+1)):
+            temp.append(lst[i])
+        else:
+            temp = []
+            temp.append(lst[i])
+        if(len(temp) > longest_run):
+            longest_run = len(temp)
+    return longest_run
+
+# print(longest_run([1, 2, 3, 10, 11, 15]))
+# print(longest_run([5, 4, 2, 1]))
+# print(longest_run([1, 2, 3, 5, 6, 7, 8, 9]))
+
