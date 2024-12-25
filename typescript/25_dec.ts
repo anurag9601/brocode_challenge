@@ -85,3 +85,62 @@ function numInStr(inputLst: string[]): string[] {
 // console.log(numInStr(["abc", "abc10"]))
 // console.log(numInStr(["abc", "ab10c", "a10bc", "bcd"]))
 // console.log(numInStr(["this is a test", "test1"]))
+
+function isPositiveDominant(numLst: number[]): boolean {
+    let positiveInt = 0
+    let nagativeInt = 0
+
+    const passedInt: number[] = []
+
+    for (let num of numLst) {
+        if (num in passedInt) {
+            continue;
+        } else {
+            if (num > 0) {
+                positiveInt++;
+            } else if (num < 0) {
+                nagativeInt++;
+            }
+            passedInt.push(num)
+        }
+    }
+
+    return positiveInt > nagativeInt ? true : false;
+}
+
+// console.log(isPositiveDominant([1, 1, 1, 1, -3, -4]))
+// console.log(isPositiveDominant([5, 99, 832, -3, -4]))
+
+function getFrequencies(input_lst: any[]) {
+    const frequencDict: { [key: string]: number } = {}
+
+    for (let i of input_lst) {
+        let count = 0
+        for (let j of input_lst) {
+            if (i.toString() == j.toString()) {
+                count++;
+            }
+        }
+        frequencDict[i.toString()] = count
+    }
+
+    return frequencDict
+}
+
+// console.log(getFrequencies([true, false, true, false, false]))
+// console.log(getFrequencies(([1, 2, 3, 3, 2])))
+
+function isHeteromecic(num: number, n: number = 0): boolean {
+    if (n * (n + 1) == num) {
+        return true;
+    }
+    if (n * (n + 1) > num) {
+        return false;
+    }
+
+    return isHeteromecic(num, n + 1);
+}
+
+console.log(isHeteromecic(136))
+console.log(isHeteromecic(156))
+console.log(isHeteromecic(2))
