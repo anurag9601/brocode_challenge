@@ -63,3 +63,25 @@ function invert(inputStr: string): string {
 
 // console.log(invert("dLROW YM sI HsEt"))
 // console.log(invert("ytInIUgAsnOc"))
+
+function numInStr(inputLst: string[]): string[] {
+    const result: string[] = []
+
+    const numLst: string[] = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+
+    for (let str of inputLst) {
+        for (let letter of str) {
+            if (letter in numLst) {
+                result.push(str);
+                break
+            }
+        }
+    }
+
+    return result
+}
+
+// console.log(numInStr(["1a", "a", "2b", "b"]))
+// console.log(numInStr(["abc", "abc10"]))
+// console.log(numInStr(["abc", "ab10c", "a10bc", "bcd"]))
+// console.log(numInStr(["this is a test", "test1"]))
