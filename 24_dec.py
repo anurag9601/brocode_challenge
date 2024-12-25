@@ -12,7 +12,8 @@ def alpha_clash(str_A, ind_A, str_Z, ind_Z):
         if(j not in ind_A):
             filter_str_Z += str_Z[j]
 
-    player_A_asci_val = [ord(x) for x in filter_str_A] #List comprehension
+    player_A_asci_val = [ord(x) for x in filter_str_A] 
+    #List comprehension
     player_Z_asci_val = [ord(y) for y in filter_str_Z]
 
     for i in range(len(player_A_asci_val)):
