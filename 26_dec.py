@@ -34,12 +34,8 @@ def num_of_days(amount, savings, current):
         for i in range(7):
             if(current_savings >= amount):
                 break
-            if(i == 0):
-                current_savings += week_start_value
-                no_of_days += 1
-            else:
-                current_savings += (week_start_value + i)
-                no_of_days += 1
+            current_savings += (week_start_value + i)
+            no_of_days += 1
         week_start_value += 1
     return no_of_days
 
