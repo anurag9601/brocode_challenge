@@ -23,5 +23,28 @@ def suffle_count(n):
 # print(suffle_count(8))
 # print(suffle_count(14))
 # print(suffle_count(52))
+
+
+def num_of_days(amount, savings, current):
+    week_start_value = current
+    current_savings = savings
+    no_of_days = 0
+
+    while(current_savings < amount):
+        for i in range(7):
+            if(current_savings >= amount):
+                break
+            if(i == 0):
+                current_savings += week_start_value
+                no_of_days += 1
+            else:
+                current_savings += (week_start_value + i)
+                no_of_days += 1
+        week_start_value += 1
+    return no_of_days
+
+# print(num_of_days(500, 300, 50))
+# print(num_of_days(2050, 1200, 10))
+# print(num_of_days(10000, 2500, 50))
     
     
