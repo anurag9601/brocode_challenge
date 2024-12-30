@@ -22,3 +22,24 @@ def split(input_str):
 # print(split("()()()"))
 # print(split("((()))(())()()(()())"))
 # print(split("((())())(()(()()))"))
+
+def wordPattern(pattern, s):
+    lst_s = s.split(" ")
+
+    passed_p = []
+    passed_s = []
+
+    if(len(pattern) != len(lst_s)):
+        return False
+    
+    for i in range(len(pattern)):
+        for j in range(i,len(pattern)):
+            if(pattern[i] == pattern[j]):
+                if(lst_s[i] != lst_s[j]):
+                    return False
+                elif(pattern[i] not in passed_p and lst_s[i] in passed_s):
+                    return False
+                else:
+                    passed_p.append(pattern[i])
+                    passed_s.append(lst_s[i])      
+    return True
