@@ -43,3 +43,29 @@ def wordPattern(pattern, s):
                     passed_p.append(pattern[i])
                     passed_s.append(lst_s[i])      
     return True
+
+# print(wordPattern("abba", "dog cat cat fish"))
+# print(wordPattern("abba", "dog cat cat dog"))
+
+def isAnagram(s, t):
+    if(len(t) != len(s)):
+            return False
+
+    passed_count = []
+
+    for i in range(len(t)):
+        s_count = 0
+        t_count = 0
+        if(s[i] not in passed_count):
+            for j in range(len(t)):
+                if(s[i] == s[j]):
+                    s_count += 1
+                if(s[i] == t[j]):
+                    t_count += 1
+            if(s_count != t_count):
+                return False
+            passed_count.append(s[i])
+    return True
+
+# print(isAnagram("anagram", "nagaram"))
+# print(isAnagram("car", "rat"))
