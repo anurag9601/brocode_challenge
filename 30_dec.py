@@ -69,3 +69,18 @@ def isAnagram(s, t):
 
 # print(isAnagram("anagram", "nagaram"))
 # print(isAnagram("car", "rat"))
+
+#solving using hash map algorithm
+def containsNearbyDuplicate(nums, k):
+
+    hash_index = {}
+
+    for i, num in enumerate(nums):
+        if num in hash_index:
+            if i - hash_index[num] <= k:
+                return True
+        hash_index[num] = i
+    return False
+
+# print(containsNearbyDuplicate([1,2,3,1], 3))
+# print(containsNearbyDuplicate([1,2,3,1,2,3], 2))
