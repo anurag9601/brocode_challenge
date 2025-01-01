@@ -19,18 +19,18 @@ function canFind(bigramLst: string[], str_lst: string[]): boolean {
 // console.log(canFind(["th", "fo", "ma", "or"], ["the", "many", "for", "forest"]))
 // console.log(canFind(["oo", "mi", "ki", "la"], ["milk", "chocolate", "cooks"]))
 
-const movingPartition = (nums_lst: number[]) : unknown[] => {
+const movingPartition = (nums_lst: number[]): unknown[] => {
 
-    const finalResultOfPartition:unknown[] = []
+    const finalResultOfPartition: unknown[] = []
 
-    for (let i=0; i<nums_lst.length - 1; i++){
-        let row:unknown[] = []
-        let col:number[] = []
-        for (let j=0; j<i+1; j++){
+    for (let i = 0; i < nums_lst.length - 1; i++) {
+        let row: unknown[] = []
+        let col: number[] = []
+        for (let j = 0; j < i + 1; j++) {
             col.push(nums_lst[j])
         }
         row.push(col)
-        row.push(nums_lst.slice(i+1))
+        row.push(nums_lst.slice(i + 1))
         finalResultOfPartition.push(row)
     }
 
@@ -41,10 +41,10 @@ const movingPartition = (nums_lst: number[]) : unknown[] => {
 // console.log(movingPartition([1, 2, 3, 4, 5]))
 // console.log(movingPartition([]))
 
-function uniqueAbbrev(abbre_lst:string[], str_lst:string[]):boolean{
-    for(let i=0; i<abbre_lst.length; i++){
-        for(let j=0; j<abbre_lst.length; j++){
-            if(j != i && abbre_lst[j].includes(abbre_lst[i])){
+function uniqueAbbrev(abbre_lst: string[], str_lst: string[]): boolean {
+    for (let i = 0; i < abbre_lst.length; i++) {
+        for (let j = 0; j < abbre_lst.length; j++) {
+            if (j != i && abbre_lst[j].includes(abbre_lst[i])) {
                 return false;
             }
         }
@@ -55,3 +55,22 @@ function uniqueAbbrev(abbre_lst:string[], str_lst:string[]):boolean{
 // console.log(uniqueAbbrev(["ho", "h", "ha"], ["house", "hope", "happy"]))
 // console.log(uniqueAbbrev(["tr", "tr", "ti"], ["train", "tree", "time"]))
 // console.log(uniqueAbbrev(["pl", "pi", "pu"], ["plant", "pilot", "pump"]))
+
+function noPermsDigits(n: number): number {
+    let arrangeCount: number = 1
+    let digitCount: number = 0
+    for (let i = n; i > 0; i--) {
+        arrangeCount = i * arrangeCount
+    }
+    while (arrangeCount != 0) {
+        arrangeCount = Math.round(arrangeCount / 10)
+        digitCount++;
+    }
+
+    return digitCount
+}
+
+// console.log(noPermsDigits(5))
+// console.log(noPermsDigits(1))
+// console.log(noPermsDigits(0))
+// console.log(noPermsDigits(8))
