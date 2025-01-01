@@ -1,5 +1,5 @@
-function reorderDigits(nums_lst: number[], order_code: string): unknown[] {
-    let result: unknown[] = []
+function reorderDigits(nums_lst: number[], order_code: string): number[] {
+    let result: number[] = []
     for (let num of nums_lst) {
         let lst_num: string[] = num.toString().split("");
         for (let i = 0; i < lst_num.length; i++) {
