@@ -53,7 +53,63 @@ function countDigits(numsLst: number[], find: string): number[] {
     return conditionCountLst;
 }
 
-console.log(countDigits([22, 53, 99, 61, 777, 8], "odd"))
-console.log(countDigits([22, 53, 99, 61, 777, 8], "even"))
-console.log(countDigits([54, 113, 89, 10], "odd"))
-console.log(countDigits([54, 113, 89, 10], "even"))
+// console.log(countDigits([22, 53, 99, 61, 777, 8], "odd"))
+// console.log(countDigits([22, 53, 99, 61, 777, 8], "even"))
+// console.log(countDigits([54, 113, 89, 10], "odd"))
+// console.log(countDigits([54, 113, 89, 10], "even"))
+
+
+function product(a: number, b: number) {
+    return function (c: number, d: number) {
+        return function (e: number, f: number) {
+            return a * c * e + b * d * f
+        };
+    };
+};
+
+// console.log(product(1,2)(1,1)(2,3));
+// console.log(product(10,2)(5,0)(2,3));
+// console.log(product(1,2)(0,3)(3,0));
+
+function checkScore(input_lst: string[][]) {
+    const signs = ["#", "O", "X", "!", "!!", "!!!"];
+    const signValue = [5, 3, 1, -1, -3, -5];
+
+    let totalSum = 0
+
+    for (let lst of input_lst) {
+        for (let i = 0; i < lst.length; i++) {
+            const valueIndex = signs.indexOf(lst[i]);
+            totalSum += signValue[valueIndex]
+        }
+    }
+    return totalSum > 0 ? totalSum : 0
+}
+
+console.log(checkScore([
+    ["#", "!"],
+    ["!!", "X"]
+]));
+
+console.log(checkScore([
+    ["!!!", "O", "!"],
+    ["X", "#", "!!!"],
+    ["!!", "X", "O"]
+]));
+
+console.log(checkScore([
+    ["#", "O", "#", "!!", "X", "!!", "#", "O", "O", "!!", "#", "X", "#", "O"],
+    ["!!!", "!!!", "!!", "!!", "!", "!", "X", "!", "!!!", "O", "!", "!!!", "X", "#"],
+    ["#", "X", "#", "!!!", "!", "!!", "#", "#", "!!", "X", "!!", "!!!", "X", "O"],
+    ["!!", "X", "!!", "!!", "!!!", "#", "O", "O", "!!!", "#", "O", "O", "#", "!!"],
+    ["O", "X", "#", "!", "!", "X", "!!!", "O", "!!!", "!!", "O", "!", "O", "X"],
+    ["!!", "!!!", "X", "!!!", "!!", "!!", "!!!", "X", "O", "!", "#", "!!", "!!", "!!!"],
+    ["!!", "!!", "#", "O", "!", "!!", "!", "!!!", "#", "O", "#", "!", "#", "!!"],
+    ["X", "X", "O", "X", "!!!", "#", "!!!", "!!!", "X", "X", "X", "!", "#", "!!"],
+    ["O", "!!!", "!", "O", "#", "!", "!", "#", "X", "X", "#", "O", "!!", "!"],
+    ["X", "!", "!!", "#", "#", "X", "!!", "O", "!!", "X", "X", "!!", "#", "X"],
+    ["!", "!!", "!!", "O", "!!", "!!", "#", "#", "!", "!!!", "O", "!", "#", "#"],
+    ["!", "!!!", "!!", "X", "!!", "!!", "#", "!!!", "O", "!!", "!!!", "!", "!", "!"],
+    ["!!!", "!!!", "!!", "O", "!", "!", "!!!", "!!!", "!!", "!!", "X", "!", "#", "#"],
+    ["O", "O", "#", "O", "#", "!", "!!!", "X", "X", "O", "!", "!!!", "X", "O"]
+]))
