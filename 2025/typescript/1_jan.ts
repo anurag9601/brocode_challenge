@@ -29,3 +29,31 @@ function reorderDigits(nums_lst: number[], order_code: string): number[] {
 // console.log(reorderDigits([63251, 78221], "desc"))
 // console.log(reorderDigits([1, 2, 3, 4], "asc"))
 // console.log(reorderDigits([1, 2, 3, 4], "desc"))
+
+function countDigits(numsLst: number[], find: string): number[] {
+    let conditionCountLst: number[] = []
+    for (let num of numsLst) {
+        const numLst = num.toString().split("")
+        let conditionCount = 0
+        for (let n of numLst) {
+            if (find === "odd") {
+                if (parseInt(n) % 2 !== 0) {
+                    conditionCount++;
+                }
+            }
+            else if (find === "even") {
+                if (parseInt(n) % 2 == 0) {
+                    conditionCount++;
+                }
+            }
+        }
+        conditionCountLst.push(conditionCount)
+    }
+
+    return conditionCountLst;
+}
+
+console.log(countDigits([22, 53, 99, 61, 777, 8], "odd"))
+console.log(countDigits([22, 53, 99, 61, 777, 8], "even"))
+console.log(countDigits([54, 113, 89, 10], "odd"))
+console.log(countDigits([54, 113, 89, 10], "even"))
