@@ -1,5 +1,5 @@
 function timeDifference(firstPlace: string, dateTime: string, secondPlace: string): string {
-    const months: string[] = ["January", "February", "March", "April", "May", "June", "July", "August", "Sepetember", "October", "November", "December"];
+    const months: string[] = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     let monthDays: number[] = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
     const timeZone: { [place: string]: string } = {
@@ -184,4 +184,28 @@ function validRondo(input_str: string): boolean {
 // console.log(validRondo("ABACADAEAFAGAHAA"));
 // console.log(validRondo("A"));
 // console.log(validRondo("ABACA"));
-// console.log(validRondo("ABA"))
+// console.log(validRondo("ABA"));
+
+function availableSpots(int_lst: number[], n: number): number {
+    let liked: number = 0;
+    for (let i = 0; i < int_lst.length - 1; i++) {
+        let firstInt = int_lst[i]
+        let secondInt = int_lst[i + 1]
+        if (firstInt % 2 === 0 && secondInt % 2 !== 0) {
+            liked++;
+        } else if (firstInt % 2 !== 0 && secondInt % 2 === 0) {
+            liked++;
+        } else if (firstInt % 2 === 0 && secondInt % 2 === 0 && n % 2 === 0) {
+            liked++;
+        } else if (firstInt % 2 !== 0 && secondInt % 2 !== 0 && n % 2 !== 0) {
+            liked++;
+        }
+    }
+
+    return liked;
+}
+
+// console.log(availableSpots([0, 4, 6, 8], 9));
+// console.log(availableSpots([0, 4, 6, 8], 12));
+// console.log(availableSpots([4, 4, 4, 4, 5], 7));
+// console.log(availableSpots([4, 4], 8));
