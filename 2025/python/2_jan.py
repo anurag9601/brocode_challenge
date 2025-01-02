@@ -1,5 +1,4 @@
 #Just for fun (stone paper sizer in python)😉
-
 import random 
 
 def stone_paper_sizer():
@@ -41,4 +40,35 @@ def stone_paper_sizer():
             print("Invalid input play again!")
 
 # stone_paper_sizer()
+
+#Using stack algorithm(FILO or LOFI)
+def isValidParentheses(input_s):
+
+    if(len(input_s) % 2 != 0):
+        return False
+
+    stack = []
+
+    paris = {
+        ")": "(",
+        "}": "{",
+        "]": "["
+    }
+
+    for char in input_s:
+        if char in paris.values():
+            stack.append(char)
+        elif char in paris.keys():
+            if not stack or stack[-1] != paris[char]:
+                return False
+            stack.pop()
+        else:
+            return False
+
+    return len(stack) == 0
+
+# print(isValidParentheses("([])"))
+# print(isValidParentheses("(]"))
+# print(isValidParentheses("()[]{}"))
+# print(isValidParentheses("()"))
 
