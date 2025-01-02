@@ -1,4 +1,4 @@
-function timeDifference(firstPlace: string, dateTime: string, secondPlace: string) {
+function timeDifference(firstPlace: string, dateTime: string, secondPlace: string): string {
     const months: string[] = ["January", "February", "March", "April", "May", "June", "July", "August", "Sepetember", "October", "November", "December"];
     let monthDays: number[] = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
@@ -87,6 +87,8 @@ function timeDifference(firstPlace: string, dateTime: string, secondPlace: strin
 
     addingTimeGap = [addHour, addMin];
 
+    console.log(addingTimeGap)
+
     let remain: number = 0;
 
     for (let type in dicCurrentDateTime) {
@@ -147,9 +149,39 @@ function timeDifference(firstPlace: string, dateTime: string, secondPlace: strin
     return `${dicCurrentDateTime.year}-${dicCurrentDateTime.month}-${dicCurrentDateTime.date} ${dicCurrentDateTime.hour.toString().length == 1 ? "0" + dicCurrentDateTime.hour : dicCurrentDateTime.hour}:${dicCurrentDateTime.min.toString().length == 1 ? "0" + dicCurrentDateTime.min : dicCurrentDateTime.min}`
 };
 
-console.log(timeDifference("Los Angeles", "April 1, 2011 23:23", "Canberra"));
-console.log(timeDifference("Los Angeles", "July 31, 1983 23:01", "New York"));
-console.log(timeDifference("London", "July 31, 1983 23:01", "Rome"));
-console.log(timeDifference("New York", "December 31, 1970 13:40", "Beijing"));
-console.log(timeDifference("Caracas", "March 15, 2023 18:00", "Moscow")) // wrong anser
-console.log(timeDifference("Buenos Aires", "November 5, 2022 22:15", "Tehran"))
+// console.log(timeDifference("Los Angeles", "April 1, 2011 23:23", "Canberra"));
+// console.log(timeDifference("Los Angeles", "July 31, 1983 23:01", "New York"));
+// console.log(timeDifference("London", "July 31, 1983 23:01", "Rome"));
+// console.log(timeDifference("New York", "December 31, 1970 13:40", "Beijing"));
+
+function validRondo(input_str: string): boolean {
+    const alphabets: string = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+    if (input_str.length == 0 || input_str.length == 1 || input_str[0] !== alphabets[0] && input_str[-1] !== alphabets[0]) return false;
+
+    let toggle: number = 0;
+    let alphaIndex: number = 1;
+    for (let letter of input_str) {
+        if (toggle % 2 == 0) {
+            if (letter != alphabets[0]) {
+                return false;
+            }
+            toggle++;
+        } else if (toggle % 2 != 0) {
+            if (letter != alphabets[alphaIndex]) {
+                return false;
+            }
+            alphaIndex++;
+            toggle++;
+        }
+    }
+    return true;
+};
+
+// console.log(validRondo("ABACADAEAFAGAHAIAJA"));
+// console.log(validRondo("ABBACCA"));
+// console.log(validRondo("ACAC"));
+// console.log(validRondo("ABACADAEAFAGAHAA"));
+// console.log(validRondo("A"));
+// console.log(validRondo("ABACA"));
+// console.log(validRondo("ABA"))
