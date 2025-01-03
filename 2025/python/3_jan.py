@@ -15,7 +15,6 @@ def print_board(sudoku):
         print()
         if(row_i != 0 and row_i+1 != len(sudoku[0]) and (row_i+1)%3 == 0 ):
             print("-" * 21)
-            print()
 
 def current_value_set(sudoku, row, col, number):
 
