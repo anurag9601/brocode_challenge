@@ -54,3 +54,28 @@ function charAtPos(input: unknown[] | string, condition: string): unknown[] | st
 // console.log(charAtPos([2, 4, 6, 8, 10], "even"));
 // console.log(charAtPos("EDABIT", "odd"));
 // console.log(charAtPos([")", "(", "*", "&", "^", "%", "$", "#", "@", "!"], "odd"));
+
+function zeroesToEnd(input_arr: number[]) {
+    if (!input_arr.includes(0)) {
+        return input_arr;
+    };
+
+    let itretion = 0;
+    let shortLength = 0;
+    while (itretion < input_arr.length - shortLength) {
+        for (let i = 0; i < input_arr.length - shortLength; i++) {
+            if (input_arr[i] == 0) {
+                input_arr.splice(i, 1)
+                input_arr.push(0)
+                shortLength++;
+            }
+        }
+        itretion++;
+    }
+    return input_arr
+}
+
+// console.log(zeroesToEnd([1, 2, 0, 0, 4, 0, 5]));
+// console.log(zeroesToEnd([0, 0, 2, 0, 5]));
+// console.log(zeroesToEnd([4, 4, 5]));
+// console.log(zeroesToEnd([0, 0]));
