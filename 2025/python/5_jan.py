@@ -47,3 +47,15 @@ def is_happy(num):
 # print(is_happy(1327))
 # print(is_happy(3970)) #This will return True
 # print(is_happy(2871))
+
+def collect(input_str, n):
+    if len(input_str) < n:
+        return []
+
+    current_slice = input_str[:n]
+    remaining_slice = collect(input_str[n:], n)
+
+    return sorted([current_slice] + remaining_slice)
+
+# print(collect("intercontinentalisationalism", 6))
+# print(collect("strengths", 3))
