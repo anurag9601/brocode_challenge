@@ -22,3 +22,15 @@ def sum_list(input_lst):
 
 # print(sum_list([1, 2, 3]))
 # print(sum_list([1, [2, [1]], 3]))
+
+def largest_even(input_lst, max_even=-1):
+    if not input_lst:
+        return max_even
+
+    if input_lst[0] % 2 == 0 and input_lst[0] > max_even:
+        max_even = input_lst[0]
+    return largest_even(input_lst[1:], max_even)
+
+
+# print(largest_even([3, 7, 2, 1, 7, 9, 10, 13]))
+# print(largest_even([1, 3, 5, 7]))
