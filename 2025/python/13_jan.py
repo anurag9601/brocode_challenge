@@ -10,3 +10,15 @@ def double_factorial(n, count=1):
 # print(double_factorial(2))
 # print(double_factorial(9))
 # print(double_factorial(14))
+
+def sum_list(input_lst):
+    total = 0
+    for item in input_lst:
+        if isinstance(item, list):
+            total += sum_list(item)
+        else:
+            total += item
+    return total
+
+# print(sum_list([1, 2, 3]))
+# print(sum_list([1, [2, [1]], 3]))
