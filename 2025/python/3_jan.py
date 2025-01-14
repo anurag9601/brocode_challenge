@@ -90,8 +90,6 @@ def give_solution(solution):
         print("Thank you!😁")
         return
 
-
-
 def sudoku():
     sudoku = [[0 for _ in range(9)] for _ in range(9)]
 
