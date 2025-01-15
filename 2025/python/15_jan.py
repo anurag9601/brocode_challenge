@@ -17,3 +17,30 @@ def get_prices(input_lst):
 #   "sandwich ($8.50)",
 #   "soup ($1.99)"
 # ]))
+
+def count_layers(layers_lst):
+    return len(set(layers_lst))
+
+# print(count_layers([
+#   "AAAA",
+#   "ABBA",
+#   "AAAA"
+# ]))
+# print(count_layers([
+#   "AAAAAAAAA",
+#   "ABBBBBBBA",
+#   "ABBAAABBA",
+#   "ABBBBBBBA",
+#   "AAAAAAAAA"
+# ]))
+# print(count_layers([
+#   "AAAAAAAAAAA",
+#   "AABBBBBBBAA",
+#   "AABCCCCCBAA",
+#   "AABCAAACBAA",
+#   "AABCADACBAA",
+#   "AABCAAACBAA",
+#   "AABCCCCCBAA",
+#   "AABBBBBBBAA",
+#   "AAAAAAAAAAA"
+# ]))
