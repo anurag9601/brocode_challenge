@@ -80,8 +80,80 @@ function cleanUp(fileLst: string[], method: string) {
 
     return result
 }
-console.log(cleanUp(["ex1.html", "ex1.js", "ex2.html", "ex2.js"], "prefix"));
-console.log(cleanUp(["ex1.html", "ex1.js", "ex2.html", "ex2.js"], "suffix"));
-console.log(cleanUp(["music_app.js", "music_app.png", "music_app.wav", "tetris.png", "tetris.js"], "prefix"));
-console.log(cleanUp(["_1.rb", "_2.rb", "_3.rb", "_4.rb"], "suffix"));
-console.log(cleanUp(["_1.rb", "_2.rb", "_3.rb", "_4.rb"], "prefix"));
+
+// console.log(cleanUp(["ex1.html", "ex1.js", "ex2.html", "ex2.js"], "prefix"));
+// console.log(cleanUp(["ex1.html", "ex1.js", "ex2.html", "ex2.js"], "suffix"));
+// console.log(cleanUp(["music_app.js", "music_app.png", "music_app.wav", "tetris.png", "tetris.js"], "prefix"));
+// console.log(cleanUp(["_1.rb", "_2.rb", "_3.rb", "_4.rb"], "suffix"));
+// console.log(cleanUp(["_1.rb", "_2.rb", "_3.rb", "_4.rb"], "prefix"));
+
+function bandNameSort(bandLst: string[]) {
+    let alphabet = "abcdefghijklmnopqrstuvwxyz"
+    let bandNameIndexAlpha: { [key: string]: number } = {}
+    let skipWord = ["The", "A", "An"]
+    for (let band = 0; band < bandLst.length; band++) {
+        let splitBandName: string[] = bandLst[band].split(" ")
+        for (let chunk of splitBandName) {
+            if (!skipWord.includes(chunk)) {
+                for (let letter of chunk.toLocaleLowerCase()) {
+                    if (!bandNameIndexAlpha[letter]) {
+                        bandNameIndexAlpha[letter] = band
+                        break
+                    }
+                }
+                break;
+            }
+        }
+    }
+
+    let result: string[] = []
+
+    for (let alpha of alphabet) {
+        if (bandNameIndexAlpha[alpha]) {
+            result.push(bandLst[bandNameIndexAlpha[alpha]])
+        }
+    }
+
+    return result
+}
+
+// console.log(bandNameSort(["The New Yardbirds", "The Beatles", "The Square Roots", "On A Friday", "An Irony"]));
+// console.log(bandNameSort(["The Platters", "A Yard of Yarn", "The Everly Brothers", "A Monster Effect", "The Sex Maggots"]))
+// console.log(bandNameSort(["But Myth", "An Old Dog", "Def Leppard", "The Any Glitters", "The Dawn"]))
+
+
+function countUniqueBooks(stringSequence: string, bookEnd: string) {
+    let uniqueBooks: number = 0
+    let startEndCount = 0
+    let tempStr = ""
+    let addBooks = false
+    for (let letter of stringSequence) {
+        if (letter == bookEnd) {
+            if (startEndCount == 0) {
+                addBooks = true
+                startEndCount += 1
+            } else {
+                let splitTempLst = tempStr.split("");
+                let passedLetter: string[] = []
+                for (let book of splitTempLst) {
+                    if (!passedLetter.includes(book) && book != bookEnd) {
+                        passedLetter.push(book)
+                        uniqueBooks++;
+                    }
+                }
+                addBooks = false
+                startEndCount = 0
+                tempStr = ""
+            }
+        }
+        if (addBooks == true) {
+            tempStr += letter
+        }
+    }
+
+    return uniqueBooks
+}
+
+// console.log(countUniqueBooks("AZYWABBCATTTA", "A"));
+// console.log(countUniqueBooks("$AA$BBCATT$C$$B$", "$"));
+// console.log(countUniqueBooks("ZZABCDEF", "Z"))
