@@ -124,30 +124,20 @@ function bandNameSort(bandLst: string[]) {
 
 function countUniqueBooks(stringSequence: string, bookEnd: string) {
     let uniqueBooks: number = 0
-    let startEndCount = 0
-    let tempStr = ""
+    let currentBooks = new Set<string>()
     let addBooks = false
     for (let letter of stringSequence) {
         if (letter == bookEnd) {
-            if (startEndCount == 0) {
+            if (!addBooks) {
                 addBooks = true
-                startEndCount += 1
             } else {
-                let splitTempLst = tempStr.split("");
-                let passedLetter: string[] = []
-                for (let book of splitTempLst) {
-                    if (!passedLetter.includes(book) && book != bookEnd) {
-                        passedLetter.push(book)
-                        uniqueBooks++;
-                    }
-                }
+                uniqueBooks += currentBooks.size;
+                currentBooks.clear();
                 addBooks = false
-                startEndCount = 0
-                tempStr = ""
             }
         }
-        if (addBooks == true) {
-            tempStr += letter
+        else if (addBooks == true) {
+            currentBooks.add(letter)
         }
     }
 
@@ -157,3 +147,34 @@ function countUniqueBooks(stringSequence: string, bookEnd: string) {
 // console.log(countUniqueBooks("AZYWABBCATTTA", "A"));
 // console.log(countUniqueBooks("$AA$BBCATT$C$$B$", "$"));
 // console.log(countUniqueBooks("ZZABCDEF", "Z"))
+
+function spoonerise(inputStr: string) {
+    let str1 = "";
+    let str2 = "";
+    let vowels = "aeiou"
+    let splitStr = inputStr.split(" ")
+    for (let word = 0; word < splitStr.length; word++) {
+        for (let letter = 0; letter < splitStr[word].length; letter++) {
+            if (vowels.includes(splitStr[word][letter])) {
+                splitStr[word] = splitStr[word].slice(letter)
+                break
+            } else {
+                if (word == 0) {
+                    str1 += splitStr[word][letter]
+                }else{
+                    str2 += splitStr[word][letter]
+                }
+            }
+        }
+    }
+
+    splitStr[0] = str2 + splitStr[0]
+    splitStr[1] = str1 + splitStr[1]
+
+    return splitStr.join(" ")
+}
+
+// console.log(spoonerise("history lecture"));
+// console.log(spoonerise("loud noises"))
+// console.log(spoonerise("chow mein"))
+// console.log(spoonerise("edabit rules!"))
