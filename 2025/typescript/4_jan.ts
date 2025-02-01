@@ -79,3 +79,19 @@ function zeroesToEnd(input_arr: number[]) {
 // console.log(zeroesToEnd([0, 0, 2, 0, 5]));
 // console.log(zeroesToEnd([4, 4, 5]));
 // console.log(zeroesToEnd([0, 0]));
+
+
+function zeroesShiftToEnd(arrNums: number[]) {
+    let zero_num_count = 0
+    for (let i = 0; i < arrNums.length; i++) {
+        if (arrNums[i] != 0) {
+            [arrNums[i], arrNums[zero_num_count]] = [arrNums[zero_num_count], arrNums[i]]
+            zero_num_count++;
+        }
+    }
+
+    return arrNums
+}
+
+// console.log(zeroesShiftToEnd([1, 2, 0, 0, 4, 0, 5]));
+// console.log(zeroesShiftToEnd([0, 0, 2, 0, 5]));
