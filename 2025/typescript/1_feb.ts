@@ -212,3 +212,92 @@ function isSet(arrObject: objectDataType[]) {
 //     { color: "green", number: 1, shade: "full", shape: "oval" },
 //     { color: "red", number: 3, shade: "full", shape: "oval" }
 // ]))
+
+function lowestElement(arr: number[][], x: number, y: number): number {
+    let currentLowest: number = arr[x][y]
+
+    if (x != 0) {
+        currentLowest = currentLowest > arr[x - 1][y] ? arr[x - 1][y] : currentLowest
+
+        if (y != 0) {
+            currentLowest = currentLowest > arr[x - 1][y - 1] ? arr[x - 1][y - 1] : currentLowest
+        }
+
+        if (y != arr[0].length) {
+            currentLowest = currentLowest > arr[x - 1][y + 1] ? arr[x - 1][y + 1] : currentLowest
+        }
+    }
+
+    if (x != arr.length - 1) {
+        currentLowest = currentLowest > arr[x + 1][y] ? arr[x + 1][y] : currentLowest
+
+        if (y != 0) {
+            currentLowest = currentLowest > arr[x + 1][y - 1] ? arr[x + 1][y - 1] : currentLowest
+        }
+
+        if (y != arr[0].length) {
+            currentLowest = currentLowest > arr[x + 1][y + 1] ? arr[x + 1][y + 1] : currentLowest
+        }
+    }
+
+    if (y != 0) {
+        currentLowest = currentLowest > arr[x][y - 1] ? arr[x][y - 1] : currentLowest
+    }
+
+    if (y != arr[0].length) {
+        currentLowest = currentLowest > arr[x][y + 1] ? arr[x][y + 1] : currentLowest
+    }
+
+    return currentLowest
+}
+
+// console.log(lowestElement([
+//     [1, 2, 3],
+//     [4, 5, 6],
+//     [7, 8, 9]
+// ], 1, 1));
+
+// console.log(lowestElement([
+//     [9, 8, 7],
+//     [0, -1, -3],
+//     [-5, -9, 54]
+// ], 0, 0));
+
+function majorityVote(arr: string[]) {
+    let voteObj: { [key: string]: number } = {};
+    for (let x of arr) {
+        if (!voteObj[x]) {
+            let voteCount = 0;
+            for (let y of arr) {
+                if (x == y) {
+                    voteCount++;
+                }
+            }
+            voteObj[x] = voteCount;
+        }
+    }
+
+    let maxVote = 0;
+    let letter: string | null = null;
+    for (let key of Object.keys(voteObj)) {
+        if (voteObj[key] > maxVote) {
+            maxVote = voteObj[key];
+            letter = key;
+        } else if (maxVote == voteObj[key]) {
+            letter = null;
+        }
+    }
+
+    return letter;
+}
+
+// console.log(majorityVote(["A", "A", "B"]));
+// console.log(majorityVote(["A", "A", "A", "B", "C", "A"]));
+// console.log(majorityVote(["A", "B", "B", "A", "C", "C"]));
+// console.log(majorityVote(["X", "X", "X", "Y", "Y"]));
+// console.log(majorityVote(["Z", "Z", "Z", "Z", "Y", "Y", "Y"]));
+// console.log(majorityVote(["M", "N", "M", "N", "M", "N", "M"]));
+// console.log(majorityVote(["A"]));
+// console.log(majorityVote(["A", "B", "C", "D", "E", "F"]));
+// console.log(majorityVote([]));
+// console.log(majorityVote(["A", "A", "A", "B", "B", "B", "A"]));
