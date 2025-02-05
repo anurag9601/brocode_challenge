@@ -27,3 +27,4 @@ function validName(nameStr: string) {
 // console.log(validName("H. George Wells"));
 // console.log(validName("H. George W."));
 // console.log(validName("Herb. George Wells"));
+
