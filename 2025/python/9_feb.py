@@ -159,3 +159,68 @@ def odd_sort(num_lst):
 # print(odd_sort([3, 7, 0, 9, 3, 2, 4, 8]))
 # print(odd_sort([2, 2, 8, 4]))
 # print(odd_sort([7, 9, 7]))
+
+def lcm(num_lst):
+
+    if(len(num_lst) == 1):
+        return num_lst[0]
+    
+    def gcd(n1, n2):
+        d = n1 if n1 > n2 else n2
+        find_diviser = False
+        while not find_diviser:
+            d -= 1
+            if(n1%d == 0 and n2%d == 0):
+                find_diviser = True
+        return d
+
+    lcm = 0
+    for i in range(1,len(num_lst)):
+        if(i == 1):
+            lcm = (num_lst[0]*num_lst[i])//gcd(num_lst[0],num_lst[i])
+        else:
+            lcm = (lcm * num_lst[i])//gcd(lcm , num_lst[i])
+    
+    return lcm
+
+
+# print(lcm([1, 2, 3, 4, 5, 6, 7, 8, 9]))
+# print(lcm([5]))
+# print(lcm([5, 7, 11]))
+# print(lcm([5, 7, 11, 35, 55, 77]))
+
+def longest_substring(num_str):
+    longest_substr = ""
+    current_substr = ""
+    even = True
+    for num in num_str:
+        if even:
+            if(int(num)%2 != 0):
+                if(len(current_substr) > len(longest_substr)):
+                    longest_substr = current_substr
+                current_substr = ""
+                current_substr = num
+                even = True
+            elif(int(num)%2 == 0):
+                current_substr += num
+                even = False
+        elif not even:
+            if(int(num)%2 == 0):
+                if(len(current_substr) > len(longest_substr)):
+                    longest_substr = current_substr
+                current_substr = ""
+                current_substr = num
+                even = False
+            elif(int(num)%2 != 0):
+                current_substr += num
+                even = True
+    
+    return longest_substr
+
+# print(longest_substring("225424272163254474441338664823"))
+# print(longest_substring("594127169973391692147228678476"))
+# print(longest_substring("721449827599186159274227324466"))
+
+
+                
+                
