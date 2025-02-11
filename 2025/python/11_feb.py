@@ -53,3 +53,31 @@ def is_subsequence():
 
 # print(is_subsequence("abc", "ahbgdc"))
 
+def solution(nums, k):
+    max_ava = 0
+    if(len(nums) == 1):
+        return nums[0] / k
+
+    for i in range(len(nums) - k):
+        current_ava = 0
+        for j in range(i, i+k):
+            current_ava += nums[j]
+        if(current_ava > max_ava):
+            max_ava = current_ava
+    print(max_ava)
+    return max_ava / k
+
+def solution_efficient(nums, k):
+    window_sum = sum(nums[:k])
+    max_sum = window_sum
+
+    for i in range(k, len(nums)):
+        window_sum += nums[i] - nums[i - k]
+        max_sum = max(max_sum, window_sum)
+
+    return max_sum / k
+
+# print(solution([5], 1))
+# print(solution([1,12,-5,-6,50,3], 4))
+# print(solution_efficient([5], 1))
+# print(solution_efficient([1,12,-5,-6,50,3], 4))
