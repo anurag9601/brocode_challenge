@@ -67,6 +67,8 @@ def solution(nums, k):
     print(max_ava)
     return max_ava / k
 
+#Solved using sliding window method
+
 def solution_efficient(nums, k):
     window_sum = sum(nums[:k])
     max_sum = window_sum
