@@ -38,3 +38,43 @@ def missing_number(arr):
 # print(missing_number([1, 2, 3, 5]))
 # print(missing_number([8, 2, 4, 5, 3, 7, 1]))
 # print(missing_number([1]))
+
+#Able to hand max 3 letters
+def permutations(s):
+    permutations_lst = []
+
+    for i in range(len(s)):
+        char = [*s]
+        del char[i]
+        for j in range(len(s)):
+            itertation_count = 0
+            while itertation_count != 2:
+                if itertation_count == 1:
+                    char = char[::-1]
+                char.insert(j, s[i])
+                join_char = "".join(char)
+                if join_char not in permutations_lst:
+                    permutations_lst.append(join_char)
+                del char[j]
+                itertation_count += 1
+
+    print(len(permutations_lst))
+    return " ".join(permutations_lst)
+
+
+# print(permutations("NOT"))
+# print(permutations("AAB"))
+# print(permutations("AB"))
+
+def findDuplicates(arr):
+    duplicate = []
+
+    for i in range(len(arr) - 1):
+        if arr[i] not in duplicates and arr[i] in arr[i+1:]:
+            duplicate.append(arr[i])
+    
+    return duplicate
+
+# print(findDuplicates([2, 3, 1, 2, 3]))
+# print(findDuplicates([0, 3, 1, 2]))
+# print(findDuplicates([2]))
