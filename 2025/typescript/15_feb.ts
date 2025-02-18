@@ -65,3 +65,39 @@ function current_streak(currentDate: string, dateObject: { [key: string]: string
 //         "date": "2019-09-23"
 //     }
 // ]))
+
+function whoWin(ticTacToeBoard: string[][]) {
+    for (let x = 0; x < ticTacToeBoard.length; x++) {
+        if (ticTacToeBoard[x][0] === ticTacToeBoard[x][1] && ticTacToeBoard[x][1] === ticTacToeBoard[x][2]) {
+            return ticTacToeBoard[x][0] === "X" ? "Player 1 wins" : "Player 2 wins"
+        } else if (ticTacToeBoard[0][x] === ticTacToeBoard[1][x] && ticTacToeBoard[1][x] === ticTacToeBoard[2][x]) {
+            return ticTacToeBoard[0][x] === "X" ? "Player 1 wins" : "Player 2 wins"
+        }
+    }
+
+    if (ticTacToeBoard[0][0] === ticTacToeBoard[1][1] && ticTacToeBoard[1][1] === ticTacToeBoard[2][2]) {
+        return ticTacToeBoard[0][0] === "X" ? "Player 1 wins" : "Player 2 wins"
+    }
+
+    if (ticTacToeBoard[0][2] === ticTacToeBoard[1][1] && ticTacToeBoard[1][1] === ticTacToeBoard[2][0]) {
+        return ticTacToeBoard[0][0] === "X" ? "Player 1 wins" : "Player 2 wins"
+    }
+
+    return "It's a Tie"
+}
+
+// console.log(whoWin([
+//     ["X", "O", "O"],
+//     ["O", "X", "O"],
+//     ["O", "#", "X"]
+// ]))
+// console.log(whoWin([
+//     ["X", "O", "O"],
+//     ["O", "X", "O"],
+//     ["X", "#", "O"]
+// ]))
+// console.log(whoWin([
+//     ["X", "X", "O"],
+//     ["O", "X", "O"],
+//     ["X", "O", "#"]
+// ]))
