@@ -16,3 +16,23 @@ def majorityElement(num_arr):
 # print(majorityElement([3, 1, 3, 3, 2]))
 # print(majorityElement([7]))
 # print(majorityElement([2, 13]))
+
+def maxSumArraySum(arr):
+    if len(arr) == 1:
+        return arr[0]
+
+    max_sum = float("-inf")
+
+    current_sum = 0
+
+    for num in arr:
+        current_sum += num
+
+        max_sum = max(max_sum, current_sum)
+
+        if current_sum < 0:
+            current_sum = 0
+
+    return max_sum
+
+print(maxSumArraySum([-5,-6,-3,-2]))
