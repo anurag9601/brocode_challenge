@@ -45,6 +45,5 @@ function pigLatinSentence(inputStr: string): string {
     return arrInputStr.join(" ")
 }
 
-console.log(pigLatinSentence("this is pig latin"));
-console.log(pigLatinSentence("wall street journal"));
-
+// console.log(pigLatinSentence("this is pig latin"));
+// console.log(pigLatinSentence("wall street journal"));
