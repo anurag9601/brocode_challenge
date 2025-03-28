@@ -25,3 +25,33 @@ def convert_to_wave(arr):
     return arr
 
 # print(convert_to_wave([1, 2, 3, 4, 5]))
+
+def find_maximum(arr):
+    prev = None
+    for num in arr:
+        if prev and prev > num:
+            return prev
+        prev = num
+    
+# print(find_maximum([1, 2, 4, 5, 7, 8, 3]))
+
+#Using recursion
+def max_of_subarray(arr, k):
+    if len(arr) < k:
+            return []
+    else:
+        max_num = max(arr[:k])
+        return [max_num] + max_of_subarray(arr[1:], k)
+    
+#Without recursion
+def max_of_subarray(arr,k):
+    if(len(arr) == 1):
+            return arr
+            
+    result = []
+    for i in range(len(arr) - (k - 1)):
+        result.append(max(arr[i:i+k]))
+    return result
+
+    
+# print(max_of_subarray([1, 2, 3, 1, 4, 5, 2, 3, 6], 3))
