@@ -1,18 +1,54 @@
-#Problem 
-# Coin Change (Count Ways)
-# Difficulty: MediumAccuracy: 43.1%Submissions: 290K+Points: 4
-# Given an integer array coins[ ] representing different denominations of currency and an integer sum, find the number of ways you can make sum by using different combinations from coins[ ]. 
-# Note: Assume that you have an infinite supply of each type of coin. Therefore, you can use any coin as many times as you want.
-# Answers are guaranteed to fit into a 32-bit integer. 
+def gcd(a, b):
+    while b:
+        a , b = b , a % b
+    return a
 
-# Examples:
+def lcm(a, b):
+    return (a * b) // gcd(a, b)  #formula LCM(a,b)= a×b / GCD(a,b)
 
-# Input: coins[] = [1, 2, 3], sum = 4
-# Output: 4
-# Explanation: Four Possible ways are: [1, 1, 1, 1], [1, 1, 2], [2, 2], [1, 3].
-# Input: coins[] = [2, 5, 3, 6], sum = 10
-# Output: 5
-# Explanation: Five Possible ways are: [2, 2, 2, 2, 2], [2, 2, 3, 3], [2, 2, 6], [2, 3, 5] and [5, 5].
-# Input: coins[] = [5, 10], sum = 3
-# Output: 0
-# Explanation: Since all coin denominations are greater than sum, no combination can make the target sum.
+def list_of_lcm(nums):
+    result = nums[0]
+    for num in nums[1:]:
+        result = lcm(result, num)
+    return result
+
+# print(lcm(4,80))
+# print(list_lcm([5, 7, 11, 35, 55, 77]))
+# print(list_lcm([1, 2, 3, 4, 5, 6, 7, 8, 9]))
+
+def authentic_skewer(str):
+    str = str.lower()
+    vowels = 'aeiou'
+    consonents = 'bcdfghjklmnopqrstvwxyz'
+    find_min_space = False
+    min_space = 0
+    current_space = 0
+    vowel_turn = False
+
+    for i in range(len(str)):
+        if str[i] in vowels or str[i] in consonents:
+            if i != 0 and not find_min_space:
+                find_min_space = True
+            if str[i] in vowels and not vowel_turn:
+                return False
+            if str[i] in consonents and vowel_turn == True:
+                return False
+            if i == len(str) - 1 and vowel_turn == True:
+                return False
+            vowel_turn = not vowel_turn
+            current_space = 0
+        else:
+            if i == 0:
+                return False
+            if not find_min_space:
+                min_space += 1
+            current_space += 1
+            if current_space > min_space:
+                return False
+    return True
+
+# print(authentic_skewer("B--A--N--A--N--A--S"))
+# print(authentic_skewer("A--X--E"))
+# print(authentic_skewer("M--A---T-E-S"))
+# print(authentic_skewer("C-L-A-P"))
+            
