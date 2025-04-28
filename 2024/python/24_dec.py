@@ -56,6 +56,7 @@ def longest_run(lst):
 # print(longest_run([1, 2, 3, 10, 11, 15]))
 # print(longest_run([5, 4, 2, 1]))
 # print(longest_run([1, 2, 3, 5, 6, 7, 8, 9]))
+# print(longest_run([1, 2, 4, 3, 6, 5, 7, 8, 20, 19, 18, 17, 40, 41, 42, 10, 9]))
 
 #Greatest common divisor of string
 
