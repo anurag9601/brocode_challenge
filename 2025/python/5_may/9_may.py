@@ -40,4 +40,29 @@ def nearest_chapter(chapter_obj, find_page_no):
 #   "The True Ending" : 460
 # }, 200))
 
+def same_vowel_group(words):
+
+    def get_present_vowel(word):
+        vowels = "aeiou"
+        present_vowels = ""
+        for letter in vowels:
+            if letter in word:
+                present_vowels += letter
+        return sorted(present_vowels)
+    
+    result = [words[0]]
+    common_vowel = get_present_vowel(words[0])
+
+    for i in range(1, len(words)):
+        current_word_vowel = get_present_vowel(words[i])
+        if current_word_vowel == common_vowel:
+            result.append(words[i])
+    
+    return result
+
+# print(same_vowel_group(["toe", "ocelot", "maniac"]))
+# print(same_vowel_group(["many", "carriage", "emit", "apricot", "animal"]))
+# print(same_vowel_group(["hoops", "chuff", "bot", "bottom"]))
+        
+
 
