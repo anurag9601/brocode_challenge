@@ -32,3 +32,25 @@ def find_anagrams(s, p):
 
 # print(find_anagrams("cbaebabacd", "abc"))
 # print(find_anagrams("abab", "ab"))
+
+def bar_chart(char_val):
+    keys = list(char_val.keys())
+    values = list(char_val.values())
+
+    for i in range(len(values)):
+        max_num_i = i
+        for j in range(i, len(values)):
+            if values[j] > values[max_num_i]:
+                max_num_i = j
+        values[i],values[max_num_i] = values[max_num_i],values[i]
+        keys[i],keys[max_num_i] = keys[max_num_i],keys[i]
+    
+    for i in range(len(keys)):
+        if values[i] == 0:
+            print(f"{keys[i]} | {values[i]}")
+        else:
+            divison = values[i] // 50 
+            print(f"{keys[i]} | {"#" * divison} {values[i]}")
+
+# bar_chart({"Q4": 500, "Q3": 100, "Q2": 100, "Q1": 150})
+# bar_chart({"Q4": 250, "Q1": 300, "Q2": 150, "Q3": 0})
