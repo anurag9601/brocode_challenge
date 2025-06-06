@@ -46,3 +46,44 @@ def max_possible(n1, n2, fn):
 # print(max_possible(523, 76, num_to_listnum))
 # print(max_possible(9132, 5564, num_to_listnum))
 # print(max_possible(8732, 91255, num_to_listnum))
+
+def is_prim_pyth_triple(nums):
+    len_n = len(nums)
+
+    prime_count = 0
+
+    def check_prime(n):
+        if n <= 1:
+            return False
+        elif n <= 3:
+            return True
+        elif n % 2 == 0 or n % 3 == 0:
+            return False
+        for i in range(5, n - 1):
+            if n % i == 0:
+                return False
+        return True
+
+    #Sorting list using bubble sort algorithm
+    for n in range(len_n -1, -1, -1):
+        if check_prime(nums[n]):
+            prime_count += 1
+        if prime_count == 2:
+            return False
+        swaped = False
+        for i in range(n):
+            if nums[i] < nums[i + 1]:
+
+                nums[i],nums[i + 1] = nums[i + 1],nums[i]
+
+                swaped = True
+        if not swaped:
+            break
+
+    return nums[0] ** 2 == (nums[1] ** 2 + nums[2] ** 2)
+
+# print(is_prim_pyth_triple([4, 5, 3]))   
+# print(is_prim_pyth_triple([7, 12, 13]))
+# print(is_prim_pyth_triple([39, 15, 36]))
+# print(is_prim_pyth_triple([4, 5, 3]))
+
