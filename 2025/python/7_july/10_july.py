@@ -7,5 +7,5 @@ def hangman(string, input_list):
             result += "-"
     return result
 
-print(hangman("helicopter", ["o", "e", "s"]))
-print(hangman("tree", ["r", "t", "e"]))
+# print(hangman("helicopter", ["o", "e", "s"]))
+# print(hangman("tree", ["r", "t", "e"]))
