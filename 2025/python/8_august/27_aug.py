@@ -27,8 +27,3 @@ def two_sum(nums, target):
     return "No target sum found in the list"
 
 # print(two_sum([2, 7, 11, 15], 9))
-
-# Three sum problem
-
-def three_sum(nums, target):
-    pass
