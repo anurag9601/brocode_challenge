@@ -21,7 +21,7 @@ function validParentheses(parentheses: string): boolean {
         }
     };
 
-    return true;
+    return stack.length === 0;
 };
 
 // console.log(validParentheses("()[]{}"));
