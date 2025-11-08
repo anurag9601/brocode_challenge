@@ -8,7 +8,7 @@ def freq_count(num_list, ele, sub_list_count=0):
             present_ele_count += 1
     return [sub_list_count, present_ele_count]
 
-print(freq_count([1, 4, 4, [1, 1, [1, 2, 1, 1]]], 1))
-print(freq_count([1, 5, 5, [5, [1, 2, 1, 1], 5, 5], 5, [5]], 5))
-print(freq_count([1, [2], 1, [[2]], 1, [[[2]]], 1, [[[[2]]]]], 2))
+# print(freq_count([1, 4, 4, [1, 1, [1, 2, 1, 1]]], 1))
+# print(freq_count([1, 5, 5, [5, [1, 2, 1, 1], 5, 5], 5, [5]], 5))
+# print(freq_count([1, [2], 1, [[2]], 1, [[[2]]], 1, [[[[2]]]]], 2))
 
