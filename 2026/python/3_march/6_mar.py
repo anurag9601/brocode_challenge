@@ -85,10 +85,10 @@ class minesweeper_game:
                     self.__list_of_sublist[index][sub_index] = neighbour_count
         self.print_sub_list(self.__list_of_sublist)
     
-result_minesweeper_game = minesweeper_game([
-  [0, 1, 0, 0],
-  [0, 0, 1, 0],
-  [0, 1, 0, 1],
-  [1, 1, 0, 0]
-])()
-print(result_minesweeper_game)
+# result_minesweeper_game = minesweeper_game([
+#   [0, 1, 0, 0],
+#   [0, 0, 1, 0],
+#   [0, 1, 0, 1],
+#   [1, 1, 0, 0]
+# ])()
+# print(result_minesweeper_game)
