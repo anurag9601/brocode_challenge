@@ -24,8 +24,6 @@ def is_match(s, p): # s contain's string and p contain's the patters on which we
         elif p_second_last_char == ".":
             pattern = "flaxible"
 
-
-
     for i in range(len(s) - 1):
         if expected_char != s[i] and expected_char != "." and pattern != "flaxible":
             return False
@@ -41,4 +39,30 @@ def is_match(s, p): # s contain's string and p contain's the patters on which we
 # print(is_match("aa", "a*"))
 # print(is_match("aa", "a"))
 # print(is_match("ab", ".*"))
+
+def freed_prisoners(prison_data):
+    my_position = prison_data[0]
+
+    if my_position == 0:
+        return 0
+    
+    is_flip = False
+    free_prisoners_count = 1 # just because my prison is open I'm the first free prisoner.
+
+    for i in range(1, len(prison_data)):
+        prison_condition = prison_data[i] if not is_flip else 1 - prison_data[i]
+
+        if prison_condition == 0:
+            free_prisoners_count += 1
+            is_flip = not is_flip
+        else:
+            continue
+    
+    return free_prisoners_count
+
+print(freed_prisoners([1, 1, 0, 0, 0, 1, 0]))
+print(freed_prisoners([1, 1, 1]))
+print(freed_prisoners([0, 0, 0]))
+print(freed_prisoners([0, 1, 1, 1]))
+
     
