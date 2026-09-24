@@ -60,9 +60,26 @@ def freed_prisoners(prison_data):
     
     return free_prisoners_count
 
-print(freed_prisoners([1, 1, 0, 0, 0, 1, 0]))
-print(freed_prisoners([1, 1, 1]))
-print(freed_prisoners([0, 0, 0]))
-print(freed_prisoners([0, 1, 1, 1]))
+# print(freed_prisoners([1, 1, 0, 0, 0, 1, 0]))
+# print(freed_prisoners([1, 1, 1]))
+# print(freed_prisoners([0, 0, 0]))
+# print(freed_prisoners([0, 1, 1, 1]))
 
+# solving this problem for 2nd time and this is my shortest solution.
+def staircase(steps):
+    start_i = 1
+    end_i = steps + 1
+    step = 1
+    if steps < 0:
+        steps = (steps * -1)
+        start_i = steps
+        end_i = 0
+        step = -1
+
+    for step in range(start_i, end_i, step):
+        print("_" * (steps - step), end="")
+        print("#" * (step))
+
+# print(staircase(7))
+# print(staircase(-8))
     
